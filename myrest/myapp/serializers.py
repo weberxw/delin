@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import Music
+from .models import Resume
 
-class MusicSerializer(serializers.ModelSerializer):
+
+class ResumeSerializer(serializers.ModelSerializer):
 
     class Meta:
 
-        model = Music
+        model = Resume
         fields = '__all__'
-

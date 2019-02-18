@@ -1,0 +1,27 @@
+
+
+curl -X GET http://127.0.0.1:8000/resumes/ -H 'Aceppt: application/json'
+
+
+
+
+curl -X POST http://127.0.0.1:8000/resumes/ -H 'content-type: application/json' -d '{
+    "name": "Lucas",
+    "address": "Rua Kurt Rantour 330 - Capoeiras - Florianopolis / SC",
+    "profession": "Desenvolvedor",
+    "education": "Bacharel em Ciência da Computação"
+}'
+
+curl -X POST http://127.0.0.1:8000/resumes/ -H 'content-type: application/json' -d '{
+    "name": "João da Silva",
+    "address": "Rua das Flores 200 - Bairro Coqueiros - Florianopolis / SC",
+    "profession": "Fisioterapeuta",
+    "education": "Bacharel em Fisioterapia - UNIVALI"
+}'
+
+curl -X POST http://127.0.0.1:8000/resumes/ -H 'content-type: application/json' -d '{
+    "name": "Leonardo de Souza",
+    "address": "Av. Salvador Di Bernardi, 500 - Campinas - São José / SC",
+    "profession": "Estudante",
+    "education": "Tecnico em Refrigeração e A/C"
+}'

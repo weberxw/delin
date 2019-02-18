@@ -5,14 +5,16 @@ from django.db import models
 
 # Create your models here.
 
-class Music(models.Model):
+class Resume(models.Model):
 
     class Meta:
 
-        db_table = 'music'
+        db_table = 'resume'
 
-    title = models.CharField(max_length=200)
-    seconds = models.IntegerField()
+    name = models.CharField(max_length=200)
+    address = models.CharField(max_length=200)
+    profession = models.CharField(max_length=200)
+    education = models.CharField(max_length=200)
 
     def __str__(self):
         return self.title

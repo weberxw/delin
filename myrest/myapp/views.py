@@ -2,16 +2,15 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from .models import Music
-from .serializers import MusicSerializer
+from .models import Resume
+from .serializers import ResumeSerializer
 from rest_framework import generics
 
 
 
 # Create your views here.
 
-class MusicList(generics.ListCreateAPIView):
+class ResumeList(generics.ListCreateAPIView):
 
-    queryset = Music.objects.all()
-    serializer_class = MusicSerializer
-
+    queryset = Resume.objects.all()
+    serializer_class = ResumeSerializer

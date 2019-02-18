@@ -1,0 +1,4 @@
+django==1.11.20
+djangorestframework==3.9.1
+django_oauth2_provider==0.2.6.1
+django-filter==2.0.0
