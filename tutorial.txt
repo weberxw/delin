@@ -1,7 +1,12 @@
+curl -X POST http://localhost:8000/o/token/ -H "content-type: application/x-www-form-urlencoded" -d "grant_type=password&client_id=695K06YA3lJJgvx2wjv5lfnFyyBeYBvb3OynLL7X&client_secret=U3E2A9RGO4RjgTt4c4upDGl6QDUT9eCY6HzCFWH1PsHoyuU9bloG1BKZhIIDyrKTdhxwIHRpl4lvd938iNydlq9shKa7h1OrYabrDeSumuXfgYt1cDnFWHxYKcPDJ5Eg&username=root&password=1234"
 
+{"access_token": "C4rw1Sc9o2YrYAyodZeGQWdqEMwqms", "expires_in": 36000, "token_type": "Bearer", "scope": "groups read write", "refresh_token": "yhMkOhsZNGYlyA2yaZcGiSld5vw6L9"}
 
-curl -X GET http://127.0.0.1:8000/resumes/ -H 'Aceppt: application/json'
+curl -X GET http://localhost:8000/musics/ -H "Authorization: Bearer C4rw1Sc9o2YrYAyodZeGQWdqEMwqms"
 
+curl -X GET http://127.0.0.1:8000/resumes/ -H 'Aceppt: application/json'  ->> AUTHENTICATION ERROR
+
+curl -X GET http://localhost:8000/resumes/ -H "Authorization: Bearer C4rw1Sc9o2YrYAyodZeGQWdqEMwqms"
 
 
 
@@ -25,3 +30,10 @@ curl -X POST http://127.0.0.1:8000/resumes/ -H 'content-type: application/json' 
     "profession": "Estudante",
     "education": "Tecnico em Refrigeração e A/C"
 }'
+
+
+
+
+
+pip3 install urllib3==1.22 --force-reinstall
+pip3 show django-oauth-toolkit

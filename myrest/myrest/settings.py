@@ -30,6 +30,17 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('oauth2_provider.contrib.rest_framework.OAuth2Authentication',),
+}
+
+OAUTH2_PROVIDER = {
+    # this is the list of available scopes
+    'SCOPES': {'read': 'Read scope', 'write': 'Write scope', 'groups': 'Access to your groups'},
+    'ACCESS_TOKEN_EXPIRE_SECONDS': 36000,
+}
+
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,10 +48,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'provider', 
-    'provider.oauth2', 
 	'myapp',
-	'rest_framework'
+	'rest_framework',
+    'oauth2_provider',
+    'corsheaders',
+
 ]
 
 MIDDLEWARE = [
@@ -51,17 +63,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
+    'corsheaders.middleware.CorsMiddleware',
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': 
-        ('rest_framework.authentication.OAuth2Authentication',
-         'rest_framework.authentication.SessionAuthentication'),
-    'DEFAULT_MODEL_SERIALIZER_CLASS':
-        'rest_framework.serializers.ModelSerializer',
-    'DEFAULT_PERMISSION_CLASSES': 
-        ('rest_framework.permissions.IsAdminUser',) 
-}
+]
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 ROOT_URLCONF = 'myrest.urls'

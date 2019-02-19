@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -19,3 +19,9 @@ class Resume(models.Model):
     def __str__(self):
         return self.title
 
+
+class Myrest(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.PROTECT)
+    description = models.CharField(max_length=30)
+    done = models.BooleanField()
+    updated = models.DateTimeField(auto_now_add=True)
