@@ -16,8 +16,7 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 
 # Create your views here.
 
-class ResumeList(generics.ListCreateAPIView):
-
+class ResumeList(generics.ListAPIView):
     queryset = Resume.objects.all()
     serializer_class = ResumeSerializer
     authentication_classes = [OAuth2Authentication, SessionAuthentication]
@@ -25,6 +24,17 @@ class ResumeList(generics.ListCreateAPIView):
     filter_backends = (filters.DjangoFilterBackend, SearchFilter, OrderingFilter)
     filter_fields = '__all__'
     ordering_fields = '__all__'
-    ordering = ('name',)
+    ordering = ('id',)
 
+class InsertResume(generics.CreateAPIView):
+    queryset = Resume.objects.all()
+    serializer_class = ResumeSerializer
+    authentication_classes = [OAuth2Authentication, SessionAuthentication]
+    permission_classes = [Or(IsAdminUser, TokenHasReadWriteScope)]
+
+class UpdateResume(generics.UpdateAPIView):
+    queryset = Resume.objects.all()
+    serializer_class = ResumeSerializer
+    authentication_classes = [OAuth2Authentication, SessionAuthentication]
+    permission_classes = [Or(IsAdminUser, TokenHasReadWriteScope)]
 
