@@ -33,7 +33,15 @@ curl -X POST http://127.0.0.1:8000/resumes/ -H 'content-type: application/json' 
 
 
 
+curl -X GET http://localhost:8000/resumes/?name=Lucas -H "Authorization: Bearer C4rw1Sc9o2YrYAyodZeGQWdqEMwqms" -H "Accept: application/json"
+curl -X GET http://localhost:8000/resumes/?profession=Estudante -H "Authorization: Bearer C4rw1Sc9o2YrYAyodZeGQWdqEMwqms" -H "Accept: application/json"
+curl -X GET http://localhost:8000/resumes/?education=Tecnico -H "Authorization: Bearer C4rw1Sc9o2YrYAyodZeGQWdqEMwqms" -H "Accept: application/json"
+#COM FILTRO
 
 
-pip3 install urllib3==1.22 --force-reinstall
-pip3 show django-oauth-toolkit
+curl -X GET http://localhost:8000/resumes/?ordering=-name -H "Authorization: Bearer C4rw1Sc9o2YrYAyodZeGQWdqEMwqms"
+curl -X GET http://localhost:8000/resumes/?ordering=id -H "Authorization: Bearer C4rw1Sc9o2YrYAyodZeGQWdqEMwqms"
+#COM ORDEM
+
+
+http://example.com/api/users?ordering=-username
