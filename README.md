@@ -62,7 +62,7 @@ curl -X GET http://localhost:8000/resumes/?ordering=id -H "Authorization: Bearer
 ```
 ###### Ordenar por Nome:
 ```
-curl -X GET http://localhost:8000/resumes/?ordering=-name -H "Authorization: Bearer {ACCESS_TOKEN_USUARIO_CADASTRADO}"
+curl -X GET http://localhost:8000/resumes/?ordering=name -H "Authorization: Bearer {ACCESS_TOKEN_USUARIO_CADASTRADO}"
 ```
 
 #### Visualização com filtro específico
