@@ -21,7 +21,12 @@ class Resume(models.Model):
 
 
 class Myrest(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.PROTECT)
+    
+    class Meta:
+        permissions = (
+            ('view_userprofile', 'View UserProfile'),
+        )
+    owner = models.ForeignKey(User, on_delete=models.PROTECT, related_name='profile')
     description = models.CharField(max_length=30)
     done = models.BooleanField()
     updated = models.DateTimeField(auto_now_add=True)

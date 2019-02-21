@@ -26,12 +26,12 @@
 ### Autenticação
 
 * Executar o seguinte comando:
-```sh
+```
 curl -X POST http://localhost:8000/o/token/ -H "content-type: application/x-www-form-urlencoded" -d "grant_type=password&client_id={CLIENT_ID_CADASTRADO}&client_secret={CLIENT_SECRET_CADASTRADO}&username={USERNAME}&password={PASSWORD}"
 ```
 
 * A resposta deve ser a seguinte:
-```sh
+```
 {"access_token": "suLSxrfXjrGM2wzsu5H4Wq06HLPfRh", "token_type": "Bearer", "refresh_token": "0VSzsrr1BMezryaCrZaZkGUxp4miBK", "expires_in": 36000, "scope": "read groups write"}
 ```
 
@@ -45,46 +45,47 @@ curl -X POST http://localhost:8000/o/token/ -H "content-type: application/x-www-
 Feita a autenticação e extraído o access_token da resposta, basta enviar os comandos de utilização da api, que são os seguintes:
 
 #### Inserção de um novo Currículo
-```sh
+```
 curl -X POST http://127.0.0.1:8000/insert/ -H "Authorization: Bearer {ACCESS_TOKEN_USUARIO_CADASTRADO}" -H 'content-type: application/json' -d '{"name": "Fulano", "address": "Rua Tal", "profession": "Profissão X", "education": "Faculdade Tal"}'
 ```
 
 #### Visualização de todos os Currículos
-```sh
+```
 curl -X GET http://localhost:8000/resumes/ -H "Authorization: Bearer {ACCESS_TOKEN_USUARIO_CADASTRADO}"
 ```
 
 #### Visualização com ordem específica
 
-Ordenar por ID: 
-```sh
+###### Ordenar por ID: 
+```
 curl -X GET http://localhost:8000/resumes/?ordering=id -H "Authorization: Bearer {ACCESS_TOKEN_USUARIO_CADASTRADO}"
 ```
-Ordenar por Nome:
-```sh
+###### Ordenar por Nome:
+```
 curl -X GET http://localhost:8000/resumes/?ordering=-name -H "Authorization: Bearer {ACCESS_TOKEN_USUARIO_CADASTRADO}"
 ```
 
 #### Visualização com filtro específico
 
 ###### Visualização por nome:
-```sh
+```
 curl -X GET http://localhost:8000/resumes/?name=Lucas -H "Authorization: Bearer {ACCESS_TOKEN_USUARIO_CADASTRADO}" -H "Accept: application/json"
 ```
 ###### Visualização por profissão:
-```sh
+```
 curl -X GET http://localhost:8000/resumes/?profession=Estudante -H "Authorization: Bearer {ACCESS_TOKEN_USUARIO_CADASTRADO}" -H "Accept: application/json"
 ```
 ###### Visualização por educação:
-```sh
+```
 curl -X GET http://localhost:8000/resumes/?education=Tecnico -H "Authorization: Bearer {ACCESS_TOKEN_USUARIO_CADASTRADO}" -H "Accept: application/json"
 ```
 
 #### Edição de um currículo existente
-```sh
+```
 curl -X PUT http://localhost:8000/update/{USER_ID}/ -H "Authorization: Bearer {ACCESS_TOKEN_USUARIO_CADASTRADO}" -H 'content-type: application/json' -d '{"name": "Fulano de tal", "address": "Rua X", "profession": "Profissão Y", "education": "Faculdade Y"}'
 ```
 **Qualquer comando executado por um usuário sem a devida permissão (ver no tópico sobre Permissões) retornará o seguinte erro: {"detail":"You do not have permission to perform this action."}. O superusuário tem permissão pra executar todos os comandos.**
+
 
 ### Autor
 

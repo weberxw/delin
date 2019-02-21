@@ -40,6 +40,10 @@ OAUTH2_PROVIDER = {
     'ACCESS_TOKEN_EXPIRE_SECONDS': 36000,
 }
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'guardian.backends.ObjectPermissionBackend',
+)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -52,7 +56,7 @@ INSTALLED_APPS = [
 	'rest_framework',
     'oauth2_provider',
     'corsheaders',
-
+    'guardian',
 ]
 
 MIDDLEWARE = [

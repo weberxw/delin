@@ -11,6 +11,7 @@ from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope, Token
 from rest_framework.authentication import SessionAuthentication
 from django_filters import rest_framework as filters
 from rest_framework.filters import SearchFilter, OrderingFilter
+from myapp.permissions import CustomObjectPermissions
 
 
 
@@ -20,7 +21,7 @@ class ResumeList(generics.ListAPIView):
     queryset = Resume.objects.all()
     serializer_class = ResumeSerializer
     authentication_classes = [OAuth2Authentication, SessionAuthentication]
-    permission_classes = [Or(IsAdminUser, TokenHasReadWriteScope)]
+    permission_classes = (CustomObjectPermissions,)
     filter_backends = (filters.DjangoFilterBackend, SearchFilter, OrderingFilter)
     filter_fields = '__all__'
     ordering_fields = '__all__'
@@ -30,11 +31,14 @@ class InsertResume(generics.CreateAPIView):
     queryset = Resume.objects.all()
     serializer_class = ResumeSerializer
     authentication_classes = [OAuth2Authentication, SessionAuthentication]
-    permission_classes = [Or(IsAdminUser, TokenHasReadWriteScope)]
+    permission_classes = (CustomObjectPermissions,)
+
+
 
 class UpdateResume(generics.UpdateAPIView):
     queryset = Resume.objects.all()
     serializer_class = ResumeSerializer
     authentication_classes = [OAuth2Authentication, SessionAuthentication]
-    permission_classes = [Or(IsAdminUser, TokenHasReadWriteScope)]
+    permission_classes = (CustomObjectPermissions,)
+    
 
